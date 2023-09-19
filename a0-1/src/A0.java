@@ -27,13 +27,11 @@ public class A0 {
             System.exit(1);
         }
 
-        //int[] i = new int[N];
-
         /* Second, the set T of previously-chosen high-speed lines, consisting of N - 1 lines, each describing a high-speed line by three numbers: 
             siteA siteB cost
         All monthly costs are integers */
         if(N > 1) {
-            HighSpeedLine[] highSpeedLine = new HighSpeedLine[N - 1];
+            HighSpeedLine[] nHighSpeedLine = new HighSpeedLine[N - 1];
 
             
             System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
@@ -43,14 +41,14 @@ public class A0 {
                     int siteA = Integer.parseInt(lineInfo[0]);
                     int siteB = Integer.parseInt(lineInfo[1]);
                     int cost = Integer.parseInt(lineInfo[2]);
-                    highSpeedLine[i] = new HighSpeedLine(siteA, siteB, cost);
+                    nHighSpeedLine[i] = new HighSpeedLine(siteA, siteB, cost);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.err.println("Needs 3 arguments: siteA siteB cost");
+                    System.err.println("N Needs 3 arguments: siteA siteB cost");
                     System.exit(1);
                 }
             }
-            for(int i = 0; i < highSpeedLine.length; i++){
-                System.out.println("T" + (i+1) + ": "+ highSpeedLine[i]);
+            for(int i = 0; i < nHighSpeedLine.length; i++){
+                System.out.println("T" + (i+1) + ": "+ nHighSpeedLine[i]);
             }
         }
 
@@ -61,9 +59,14 @@ public class A0 {
         //Third, a line containing the number K of new additional lines, with 1 <= K <= 10.
         System.out.println("Enter K, number of additional lines: ");
         int K = Integer.parseInt(scanner.nextLine().trim());
+        if(K < 1 || K > 10){
+            System.err.println("K failed range: 1 <= K <= 10");
+            System.exit(1);
+        }
+
+        //Fourth, K lines, each describing a new high-speed line, in the same format as the existing lines
         if(K > 0 && K <= 10){
-            //Fourth, K lines, each describing a new high-speed line, in the same format as the existing lines
-            HighSpeedLine[] newHighSpeedLine = new HighSpeedLine[K];
+            HighSpeedLine[] kHighSpeedLine = new HighSpeedLine[K];
 
             System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
             for(int i = 0; i < K; i++) {
@@ -72,20 +75,53 @@ public class A0 {
                     int siteA = Integer.parseInt(lineInfo[0]);
                     int siteB = Integer.parseInt(lineInfo[1]);
                     int cost = Integer.parseInt(lineInfo[2]);
-                    newHighSpeedLine[i] = new HighSpeedLine(siteA, siteB, cost);
+                    kHighSpeedLine[i] = new HighSpeedLine(siteA, siteB, cost);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.err.println("Needs 3 arguments: siteA siteB cost");
+                    System.err.println("K Needs 3 arguments: siteA siteB cost");
                     System.exit(1);
                 }
             }
 
-            for(int i = 0; i < newHighSpeedLine.length; i++){
-                System.out.println("T" + (i+1) + ": "+ newHighSpeedLine[i]);
+            for(int i = 0; i < kHighSpeedLine.length; i++){
+                System.out.println("T" + (i+1) + ": "+ kHighSpeedLine[i]);
             }
         }else{
             System.err.println("K failed range: 1 <= K <= 10");
             System.exit(1);
         }
+
+        //Fifth, A line containing the number M of originally available high-speed lines, with N - 1 <= M <= N (N - 1)/2
+        System.out.println("Enter M, originally available high-speed lines: ");
+        int M = Integer.parseInt(scanner.nextLine().trim());
+        if(M < (N - 1) || M > ((N*(N - 1))/2)){
+            System.err.println("M failed range: N - 1 <= M <= N (N - 1)/2");
+            System.exit(1);
+        }
+
+        //Last, M lines, each describing an originally-available high-speed lines in the same format as before.
+        
+        HighSpeedLine[] mHighSpeedLine = new HighSpeedLine[M];
+
+        System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
+        for(int i = 0; i < M; i++) {
+            try {
+                String[] lineInfo = scanner.nextLine().split(" ");
+                int siteA = Integer.parseInt(lineInfo[0]);
+                int siteB = Integer.parseInt(lineInfo[1]);
+                int cost = Integer.parseInt(lineInfo[2]);
+                mHighSpeedLine[i] = new HighSpeedLine(siteA, siteB, cost);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.err.println("M Needs 3 arguments: siteA siteB cost");
+                System.exit(1);
+            }
+        }
+
+        for(int i = 0; i < mHighSpeedLine.length; i++){
+            System.out.println("T" + (i+1) + ": "+ mHighSpeedLine[i]);
+        }
+
+
+
         scanner.close();
     }
 }
