@@ -20,7 +20,7 @@ public class A0 {
         Scanner scanner = new Scanner(System.in);
 
         //First, a line containing the number N of computer sites, with 1 <= N <= 10000, and where each computer site is referred to by its number i, 1 <= i <= N
-        System.out.println("Enter N, number of computer sites: ");
+        //System.out.println("Enter N, number of computer sites: ");
         int N = Integer.parseInt(scanner.nextLine().trim());
         if(N < 1 || N > 10000){
             System.err.println("N failed range: 1 <= N <= 10000");
@@ -30,11 +30,10 @@ public class A0 {
         /* Second, the set T of previously-chosen high-speed lines, consisting of N - 1 lines, each describing a high-speed line by three numbers: 
             siteA siteB cost
         All monthly costs are integers */
-        if(N > 1) {
-            HighSpeedLine[] nHighSpeedLine = new HighSpeedLine[N - 1];
+        HighSpeedLine[] nHighSpeedLine = new HighSpeedLine[N - 1];
 
-            
-            System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
+        if(N > 1) {
+            //System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
             for(int i = 0; i < N - 1; i++) {
                 try {
                     String[] lineInfo = scanner.nextLine().split(" ");
@@ -47,9 +46,9 @@ public class A0 {
                     System.exit(1);
                 }
             }
-            for(int i = 0; i < nHighSpeedLine.length; i++){
-                System.out.println("T" + (i+1) + ": "+ nHighSpeedLine[i]);
-            }
+            // for(int i = 0; i < nHighSpeedLine.length; i++){
+            //     System.out.println("T" + (i+1) + ": "+ nHighSpeedLine[i]);
+            // }
         }
 
         //scanner.close();
@@ -57,7 +56,7 @@ public class A0 {
         
 
         //Third, a line containing the number K of new additional lines, with 1 <= K <= 10.
-        System.out.println("Enter K, number of additional lines: ");
+        //System.out.println("Enter K, number of additional lines: ");
         int K = Integer.parseInt(scanner.nextLine().trim());
         if(K < 1 || K > 10){
             System.err.println("K failed range: 1 <= K <= 10");
@@ -65,10 +64,10 @@ public class A0 {
         }
 
         //Fourth, K lines, each describing a new high-speed line, in the same format as the existing lines
-        if(K > 0 && K <= 10){
-            HighSpeedLine[] kHighSpeedLine = new HighSpeedLine[K];
+        HighSpeedLine[] kHighSpeedLine = new HighSpeedLine[K];
 
-            System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
+        if(K > 0 && K <= 10){
+            //System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
             for(int i = 0; i < K; i++) {
                 try {
                     String[] lineInfo = scanner.nextLine().split(" ");
@@ -82,16 +81,16 @@ public class A0 {
                 }
             }
 
-            for(int i = 0; i < kHighSpeedLine.length; i++){
-                System.out.println("T" + (i+1) + ": "+ kHighSpeedLine[i]);
-            }
+            // for(int i = 0; i < kHighSpeedLine.length; i++){
+            //     System.out.println("T" + (i+1) + ": "+ kHighSpeedLine[i]);
+            // }
         }else{
             System.err.println("K failed range: 1 <= K <= 10");
             System.exit(1);
         }
 
         //Fifth, A line containing the number M of originally available high-speed lines, with N - 1 <= M <= N (N - 1)/2
-        System.out.println("Enter M, originally available high-speed lines: ");
+        //System.out.println("Enter M, originally available high-speed lines: ");
         int M = Integer.parseInt(scanner.nextLine().trim());
         if(M < (N - 1) || M > ((N*(N - 1))/2)){
             System.err.println("M failed range: N - 1 <= M <= N (N - 1)/2");
@@ -102,7 +101,7 @@ public class A0 {
         
         HighSpeedLine[] mHighSpeedLine = new HighSpeedLine[M];
 
-        System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
+        //System.out.println("Enter the set T, describing a high-speed line by three numbers (siteA siteB cost): ");
         for(int i = 0; i < M; i++) {
             try {
                 String[] lineInfo = scanner.nextLine().split(" ");
@@ -116,12 +115,23 @@ public class A0 {
             }
         }
 
-        for(int i = 0; i < mHighSpeedLine.length; i++){
-            System.out.println("T" + (i+1) + ": "+ mHighSpeedLine[i]);
-        }
-
-
-
         scanner.close();
+        // for(int i = 0; i < mHighSpeedLine.length; i++){
+        //     System.out.println("T" + (i+1) + ": "+ mHighSpeedLine[i]);
+        // }
+
+        /* 
+        Output
+        You must write to standard output two lines:
+            • the cost of the original network of chosen lines
+            • the cost of the best new network of lines found among the M + K available lines. 
+        */
+        
+        // the cost of the original network of chosen lines
+        int originalCost = 0;
+        for(HighSpeedLine line : nHighSpeedLine) {
+            originalCost += line.cost;
+        }
+        System.out.println(originalCost);
     }
 }
