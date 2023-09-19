@@ -1,0 +1,41 @@
+commit b105a3563cac4eacb97105e650a893bd83f1ff27
+Author: Duro Piri <dud072@usask.ca>
+Date:   Tue Sep 19 00:39:43 2023 -0600
+
+    added .in file
+
+commit ea912909399633c02db0e8b34a1dd7584512bc61
+Author: Duro Piri <dud072@usask.ca>
+Date:   Tue Sep 19 00:38:57 2023 -0600
+
+    minor changes + added .in file
+
+commit d72a0a689575e9db187701fa4e4d88bdee455632
+Author: Duro Piri <dud072@usask.ca>
+Date:   Tue Sep 19 00:16:49 2023 -0600
+
+    All input read successfully
+
+commit caff8a24f99780a08e52188e7f167cd5ed2b7ce8
+Author: Duro Piri <dud072@usask.ca>
+Date:   Tue Sep 19 00:05:29 2023 -0600
+
+    correctly reading input for K and K lines + minor changes
+
+commit 2df0ad2976a4d59645603136cf333aaa032520ee
+Author: Duro Piri <dud072@usask.ca>
+Date:   Mon Sep 18 23:32:58 2023 -0600
+
+    Correctly reading input for N and set T
+
+commit 9e39c3072ec853200b0af94a506a4467cb386911
+Author: Duro Piri <dud072@usask.ca>
+Date:   Mon Sep 18 22:40:22 2023 -0600
+
+    Created directories
+
+commit 947b32ff4158eaf77791c8e81f44db2a44f3fe0f
+Author: Duro Duro-Pirisola (dud072) <dud072@mail.usask.ca>
+Date:   Sat Sep 16 14:28:56 2023 -0600
+
+    Initial commit
